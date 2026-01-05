@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Feliz Cumpleaños</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div id="star-container"></div>
+    <main id="app">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <!-- Slide 1: Intro -->
+                <div class="swiper-slide" id="slide-1">
+                    <div class="content">
+                        <span class="label">Hola...</span>
+                        <h1>¡Tengo algo especial para ti!</h1>
+                        <p>Desliza para continuar <br> 👇</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Message 1 -->
+                <div class="swiper-slide" id="slide-2">
+                    <div class="content">
+                        <img src="foto1.jpg" class="slide-image" alt="Momento especial">
+                        <h2>Hoy es un día único</h2>
+                        <p>Porque celebramos que estás aquí, iluminando el mundo con tu sonrisa.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Message 2 -->
+                <div class="swiper-slide" id="slide-3">
+                    <div class="content">
+                        <img src="foto2.jpg" class="slide-image" alt="Recuerdo feliz">
+                        <h2>Te deseo...</h2>
+                        <p>Toda la felicidad, amor y éxito que te mereces. Que este nuevo año esté lleno de momentos mágicos.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Finale -->
+                <div class="swiper-slide" id="slide-4">
+                    <div class="content">
+                        <h1 class="big-title">¡Feliz Cumpleaños!</h1>
+                        <p>🎂🥳✨</p>
+                        <button id="replay-btn">Ver de nuevo</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

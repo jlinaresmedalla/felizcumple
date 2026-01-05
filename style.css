@@ -1,0 +1,206 @@
+:root {
+    --primary-bg: #fff0f3;
+    --accent-color: #ff4d6d;
+    --text-color: #590d22;
+    --gradient-1: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+    --gradient-2: linear-gradient(135deg, #e0fbfc 0%, #98c1d9 100%);
+    --gradient-3: linear-gradient(135deg, #e2e2e2 0%, #ffffff 100%);
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    color: var(--text-color);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#star-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2px;
+    width: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+.star.shooting {
+    height: 2px;
+    width: 100px;
+    border-radius: 50%; /* Just to be safe not boxy */
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shoot 3s ease-in-out infinite; 
+    /* Animation duration and delay will be overridden by JS */
+}
+
+@keyframes twinkle {
+    0% { opacity: 0; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg);
+        opacity: 0;
+    }
+}
+
+#app {
+    width: 100%;
+    max-width: 400px; 
+    height: 90vh; /* Give it some breathing room for card effect */
+    max-height: 800px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 18px;
+    background: #fff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+/* Slide Backgrounds */
+#slide-1 { background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%); }
+#slide-2 { background: linear-gradient(160deg, #d8e2dc 0%, #ffe5d9 100%); }
+#slide-3 { background: linear-gradient(160deg, #f3d2c1 0%, #fefaa1 100%); }
+#slide-4 { background: linear-gradient(160deg, #ffc8dd 0%, #ffa6c1 100%); }
+
+/* Typography */
+h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--accent-color);
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.big-title {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    color: var(--accent-color);
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 100%;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 15px;
+    display: block;
+    font-weight: 400;
+}
+
+/* Button */
+button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    background: #fff;
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Images */
+.slide-image {
+    width: 100%;
+    max-width: 250px; /* Keep it neat */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border: 4px solid #fff;
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease;
+}
+
+.slide-image:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Animations */
+.swiper-slide-active .content {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
