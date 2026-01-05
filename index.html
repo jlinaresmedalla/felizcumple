@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="color-scheme" content="dark light">
     <title>Feliz Cumpleaños</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +17,16 @@
 </head>
 <body>
     <div id="star-container"></div>
-    <main id="app">
-        <div class="swiper mySwiper">
+    <div id="layout-container">
+        <header>
+            <div class="avatar-container">
+                <img src="images/foto1.jpg" alt="Esthefany" class="avatar">
+            </div>
+            <span class="header-title">Esthefany</span>
+        </header>
+
+        <main id="app">
+            <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 
                 <!-- Slide 1: Intro -->
@@ -106,7 +115,12 @@
 
             </div>
         </div>
-    </main>
+        </main>
+
+        <footer>
+            <p>creado by alvaro <3</p>
+        </footer>
+    </div>
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
