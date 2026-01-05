@@ -188,6 +188,19 @@ footer {
 #slide-9 { background: linear-gradient(135deg, #fff0f5 0%, #e6e6fa 100%); } /* LavenderBlush */
 #slide-10 { background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); } /* Clean White */
 
+/* Slide Text Colors - Harmonized */
+#slide-1 h2, #slide-1 p { color: #5d4037; } /* Warm Brown */
+#slide-2 h2, #slide-2 p { color: #283593; } /* Indigo */
+#slide-3 h2, #slide-3 p { color: #4e342e; } /* Dark Brown */
+#slide-4 h2, #slide-4 p { color: #004d40; } /* Teal */
+#slide-5 h2, #slide-5 p { color: #880e4f; } /* Burgundy */
+#slide-6 h2, #slide-6 p { color: #37474f; } /* Blue Grey */
+#slide-7 h2, #slide-7 p { color: #33691e; } /* Olive */
+#slide-8 h2, #slide-8 p { color: #01579b; } /* Light Blue Text */
+#slide-9 h2, #slide-9 p { color: #4a148c; } /* Purple */
+#slide-10 h2, #slide-10 p { color: #c2185b; } /* Pink */
+
+
 
 /* Typography */
 h1 {
@@ -264,9 +277,11 @@ button:hover {
     border: 3px solid #fff;
     transform: rotate(-3deg);
     transition: transform 0.3s ease;
+    animation: pulse 3s infinite ease-in-out;
 }
 
 .slide-image:hover {
+    animation: none;
     transform: rotate(0deg) scale(1.02);
 }
 
@@ -328,4 +343,10 @@ button:hover {
         transform: translateX(-200vh) translateY(200vh) rotate(-45deg);
         opacity: 0;
     }
+}
+
+@keyframes pulse {
+    0% { transform: rotate(-3deg) scale(1); }
+    50% { transform: rotate(-3deg) scale(1.05); }
+    100% { transform: rotate(-3deg) scale(1); }
 }

@@ -9,8 +9,8 @@ var swiper = new Swiper(".mySwiper", {
     },
     on: {
         slideChange: function () {
-            // Check if it's the last slide (index 9 or greater)
-            if (this.activeIndex >= 9) {
+            // Check if it's the last slide (index 7 or greater)
+            if (this.activeIndex >= 7) {
                 triggerConfetti();
             }
         }
