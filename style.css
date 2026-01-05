@@ -35,49 +35,80 @@ body {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    z-index: 10;
+    z-index: 10; /* Above stars */
 }
 
-#star-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
+/* #star-container removed */
+
+/* ... existing code ... */
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+    80% {
+        opacity: 1; /* Keep visible for long travel */
+    }
+    100% {
+        /* Use vmax to ensure we cross the longest dimension of the screen */
+        transform: translateX(-150vmax) translateY(150vmax) rotate(-45deg);
+        opacity: 0;
+    }
 }
 
 /* Header */
 header {
     display: flex;
-    flex-direction: column; /* Centered layout as requested */
+    flex-direction: row; /* Aligned side by side */
+    justify-content: center;
     align-items: center;
     padding: 20px 20px 10px 20px;
+    gap: 15px; /* Space between photo and name */
     color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Better readability over starts */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .avatar-container {
-    width: 80px; /* Increased size */
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    margin-right: 0;
-    margin-bottom: 10px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    width: 85px;
+    height: 85px;
+    /* Heart Shape using mask */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    /* Remove border/radius since we use mask */
+    border: none;
+    border-radius: 0;
+    margin: 0; 
+    
+    /* Create White Border Effect */
+    background-color: white; /* The "border" color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* No padding needed if using flex centering and smaller image */
 }
 
 .avatar {
-    width: 100%;
-    height: 100%;
+    width: 92%; /* Slightly smaller to reveal the white container background */
+    height: 92%;
     object-fit: cover;
+    
+    /* Mask the image too so it fits the same shape */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 
 .header-title {
-    font-family: 'Playfair Display', serif; /* Elegant font */
-    font-size: 2.2rem; /* Larger title */
+    font-family: 'Pacifico', cursive; /* Updated Font */
+    font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -217,6 +248,14 @@ button:hover {
     transform: rotate(0deg) scale(1.02);
 }
 
+/* Specific rule for Slide 8 image to appear 50% larger/taller */
+#slide-8 .slide-image {
+    height: 300px; /* 200px * 1.5 = 300px */
+}
+
+/* Shooting Stars */
+
+
 /* Animations */
 .swiper-slide-active .content {
     animation: fadeInUp 0.6s ease-out forwards;
@@ -230,5 +269,23 @@ button:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+    100% { opacity: 0.3; transform: scale(1); }
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        /* Move across the entire viewport diagonal */
+        transform: translateX(-200vh) translateY(200vh) rotate(-45deg);
+        opacity: 0;
     }
 }
