@@ -160,6 +160,12 @@ footer {
     width: 85%;
     height: 100%;
     max-height: 550px; /* Bit more compact */
+    opacity: 0;
+    transition: opacity 0.5s ease 0.5s; /* Delay reveal slightly */
+}
+
+.swiper.visible {
+    opacity: 1;
 }
 
 .swiper-slide {
@@ -349,4 +355,93 @@ button:hover {
     0% { transform: rotate(-3deg) scale(1); }
     50% { transform: rotate(-3deg) scale(1.05); }
     100% { transform: rotate(-3deg) scale(1); }
+}
+
+/* Envelope Overlay Styles */
+/* Envelope Overlay Styles */
+#envelope-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 100%;
+    max-height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1), opacity 1s ease;
+}
+
+#app {
+    position: relative;
+}
+
+#envelope-overlay.open {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Dog Animation Styles */
+.dog-container {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    width: 750px;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.dog-state-1, .dog-state-2 {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+.dog-state-2 {
+    display: none;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dog-container.open .dog-state-1 {
+    display: none;
+}
+
+.dog-container.open .dog-state-2 {
+    display: block;
+}
+
+.dog-container:hover .dog-state-1 {
+    transform: scale(1.05);
+}
+
+.click-instruction {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    font-size: 1.75rem;
+    font-weight: 500;
+    font-family: 'Pacifico', cursive;
+    opacity: 0.8;
+    animation: fadeInUp 1s ease-out forwards;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }

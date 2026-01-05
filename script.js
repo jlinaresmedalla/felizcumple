@@ -97,3 +97,23 @@ for (let i = 0; i < shootingStarCount; i++) {
     
     starContainer.appendChild(star);
 }
+
+// Dog Interaction
+const envelopeOverlay = document.getElementById('envelope-overlay');
+const dogContainer = document.querySelector('.dog-container');
+
+if (envelopeOverlay && dogContainer) {
+    dogContainer.addEventListener('click', () => {
+        dogContainer.classList.add('open');
+        
+        // Wait shorter time for dog change visual
+        setTimeout(() => {
+            envelopeOverlay.classList.add('open'); // Triggers the fly up/fade out
+            document.querySelector('.swiper').classList.add('visible'); // Reveal cards
+            
+            setTimeout(() => {
+                 envelopeOverlay.style.display = 'none';
+            }, 1000); // Matches CSS transition time
+        }, 200); // Wait for user to see the happy dog
+    });
+}
