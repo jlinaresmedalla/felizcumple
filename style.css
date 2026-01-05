@@ -38,7 +38,29 @@ body {
     z-index: 10; /* Above stars */
 }
 
-/* #star-container removed */
+#star-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.terrain {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25vh;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230b1026' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    z-index: 1; /* Above stars, below layout */
+}
 
 /* ... existing code ... */
 
@@ -63,7 +85,7 @@ header {
     flex-direction: row; /* Aligned side by side */
     justify-content: center;
     align-items: center;
-    padding: 20px 20px 10px 20px;
+    padding: 50px 20px 10px 20px;
     gap: 15px; /* Space between photo and name */
     color: white;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -254,6 +276,24 @@ button:hover {
 }
 
 /* Shooting Stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--duration, 2s) infinite ease-in-out;
+}
+
+.star.shooting {
+    height: 2px;
+    width: 100px;
+    border-radius: 50%;
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shoot 3s linear infinite;
+    filter: drop-shadow(0 0 2px white);
+}
 
 
 /* Animations */

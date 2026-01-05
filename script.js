@@ -53,10 +53,9 @@ function triggerConfetti() {
 
 // Background Stars Logic
 // Background Stars Logic removed as per request
-/*
 const starContainer = document.getElementById('star-container');
-const starCount = 300; // Even more static stars
-const shootingStarCount = 100; // Heavy rain!
+const starCount = 200; 
+const shootingStarCount = 15; 
 
 // Create static twinkling stars
 for (let i = 0; i < starCount; i++) {
@@ -64,37 +63,37 @@ for (let i = 0; i < starCount; i++) {
     star.classList.add('star');
     const x = Math.random() * 100;
     const y = Math.random() * 100;
+    const size = Math.random() * 2 + 1; // 1px to 3px
     const delay = Math.random() * 3;
     const duration = Math.random() * 2 + 2;
     
     star.style.left = `${x}%`;
     star.style.top = `${y}%`;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.setProperty('--duration', `${duration}s`);
     star.style.animationDelay = `${delay}s`;
-    star.style.animationDuration = `${duration}s`;
     
     starContainer.appendChild(star);
 }
 
-// Create shooting stars with intense rain parameters
+// Create shooting stars
 for (let i = 0; i < shootingStarCount; i++) {
     const star = document.createElement('div');
     star.classList.add('star', 'shooting');
     
-    // Start from a MASSIVE range to ensure diagonal coverage across the whole screen.
-    // Since they move -X and +Y, stars starting far right (300%) will cross the visible area.
-    const left = Math.random() * 350 - 50; // -50% to 300%
-    const top = Math.random() * 100 - 50; // -50% to 50%
+    // Random start positions
+    const top = Math.random() * 50; 
+    const left = Math.random() * 100;
     
-    // Faster and more frequent rain
-    const delay = Math.random() * 5; 
-    const duration = Math.random() * 1 + 1; // 1s - 2s
+    const delay = Math.random() * 10; 
+    const duration = Math.random() * 1 + 2; // 2s - 3s
     
-    star.style.left = `${left}%`;
     star.style.top = `${top}%`;
+    star.style.left = `${left}%`;
     
     star.style.animationDelay = `${delay}s`;
     star.style.animationDuration = `${duration}s`;
     
     starContainer.appendChild(star);
 }
-*/
